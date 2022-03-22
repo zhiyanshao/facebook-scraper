@@ -871,8 +871,14 @@ class FacebookScraper:
         elems = response.html.find("input[name][value]")
         data = {elem.attrs['name']: elem.attrs['value'] for elem in elems}
         data.update(extra_data)
-        response = self.session.post(url, data=data, **self.requests_kwargs)
-        return response
+        print(str(self.session.cookies) + '\n')
+        print(str(self.session.headers) + '\n')
+        print(str(data) + '\n')
+        print(url + '\n')
+        print(str(self.requests_kwargs) + '\n')
+        # response = self.session.post(url, data=data, **self.requests_kwargs)
+        # return response
+        return None
 
     def login(self, email: str, password: str):
         response = self.get(self.base_url)
